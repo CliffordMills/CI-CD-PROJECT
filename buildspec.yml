@@ -24,8 +24,9 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       - >
-        printf '[{"name":"cicd-alpha","imageUri":"%s"}]' "$IMAGE_REPO_NAME"
+        printf '[{"name":"cicd-alpha","imageUri":"%s"}]'
         "$REPOSITORY_URI:$IMAGE_TAG" > imagedefinitions.json
+      - cat imagedefinitions.json
 artifacts:
   files:
-       - imagedefinitions.json
+    - imagedefinitions.json
